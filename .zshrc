@@ -66,6 +66,9 @@ alias open='mimeo'
 alias pstatus='pueue status'
 alias pclean='pueue clean'
 alias padd='pueue add --'
+# replacement for programs
+alias cat='bat'
+alias vim='nvim'
 
 # Environmen variables
 #
