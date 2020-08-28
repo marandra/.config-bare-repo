@@ -50,7 +50,7 @@ source ~/Apps/powerlevel10k/powerlevel10k.zsh-theme
 
 # Aliases
 #
-alias git-dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles-repo/ --work-tree=$HOME'
+alias gitdot='/usr/bin/git --git-dir=$HOME/.config-bare-repo/ --work-tree=$HOME'
 #
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
