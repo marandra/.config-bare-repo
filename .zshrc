@@ -1,11 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 # History options
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -38,16 +30,15 @@ source /home/marcelo/.autojump/etc/profile.d/autojump.sh
 autoload -Uz compinit
 compinit
 #_comp_options+=(globdots)  # include hidden files
+# allow source bash completion scripts
+autoload bashcompinit
+bashcompinit
 
 # Prompt
 #
 #autoload -Uz promptinit
 #promptinit
 #prompt pws
-#source ~/Apps/powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/p10k.zsh ]] || source ~/.config/p10k.zsh
 
 # Aliases
 #
@@ -67,9 +58,11 @@ alias open='mimeo'
 alias pstatus='pueue status'
 alias pclean='pueue clean'
 alias padd='pueue add --'
-# replacement for programs
+#
 alias cat='bat'
 alias vim='nvim'
+alias vimdiff='nvim -d'
+alias icat='kitty +kitten icat'
 
 # Environmen variables
 #
@@ -80,3 +73,23 @@ source ~/Apps/k/k.sh
 source ~/Apps/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 source ~/Apps/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(dircolors ~/.dir_colors)";
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/marcelo/Apps/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/marcelo/Apps/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/marcelo/Apps/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/marcelo/Apps/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+source /home/marcelo/.config/broot/launcher/bash/br
+eval "$(starship init zsh)"

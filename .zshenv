@@ -13,3 +13,4 @@ path=("$HOME/Apps/bin" "$path[@]")
 export PATH
 
 export EDITOR=/usr/bin/nvim
+export TERMINAL=xterm-kitty
